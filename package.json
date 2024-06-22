@@ -2,8 +2,9 @@
   "name": "sara_atif-adventure_game",
   "version": "1.0.0",
   "description": "console interactive adventure game using typescript",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
+  "bin": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

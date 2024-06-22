@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import inquirer from "inquirer";
 import chalk from "chalk";
 
@@ -66,7 +68,8 @@ do {
                     console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"))
                     process.exit()
                 }
-            };
+            }
+            
             if (num <= 0) {
                 p1.fuelDecrease()
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`))
@@ -76,6 +79,7 @@ do {
                     process.exit()
                 }
             }
+        
         }
         if (ask.Option == "Drink portion") {
             p1.fuelIncrease();
@@ -106,7 +110,8 @@ do {
                     console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"))
                     process.exit()
                 }
-            };
+            }
+            
             if (num <= 0) {
                 p1.fuelDecrease()
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`))
@@ -116,6 +121,7 @@ do {
                     process.exit()
                 }
             }
+        
         }
         if (ask.Option == "Drink portion") {
             p1.fuelIncrease();
@@ -146,7 +152,8 @@ do {
                     console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"))
                     process.exit()
                 }
-            };
+            }
+            
             if (num <= 0) {
                 p1.fuelDecrease()
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`))
@@ -156,6 +163,7 @@ do {
                     process.exit()
                 }
             }
+        
         }
         if (ask.Option == "Drink portion") {
             p1.fuelIncrease();

@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bold.blueBright("\n\t wellcome to `Àdventure Game with Sara Atif`\n"));
@@ -66,7 +67,6 @@ do {
                     process.exit();
                 }
             }
-            ;
             if (num <= 0) {
                 p1.fuelDecrease();
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`));
@@ -108,7 +108,6 @@ do {
                     process.exit();
                 }
             }
-            ;
             if (num <= 0) {
                 p1.fuelDecrease();
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`));
@@ -149,7 +148,6 @@ do {
                     process.exit();
                 }
             }
-            ;
             if (num <= 0) {
                 p1.fuelDecrease();
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`));
