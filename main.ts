@@ -64,7 +64,7 @@ do {
                 p1.fuelDecrease()
                 console.log(chalk.bold.red(`\n${p1.name} fuel is ${p1.fuel}`))
                 console.log(chalk.bold.green(`${o1.name} fuel is ${o1.fuel}\n`))
-                if (p1.fuel <= 0) {
+                if (p1.fuel == 0) {
                     console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"))
                     process.exit()
                 }
@@ -74,7 +74,7 @@ do {
                 p1.fuelDecrease()
                 console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`))
                 console.log(chalk.bold.green(`${p1.name} fuel is ${p1.fuel}\n`))
-                if (o1.fuel <= 0) {
+                if (o1.fuel == 0) {
                     console.log(chalk.bold.green.italic("\nYou Win!\n"))
                     process.exit()
                 }

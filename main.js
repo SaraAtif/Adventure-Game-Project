@@ -1,54 +1,56 @@
 #! /usr/bin/env node
-import inquirer from "inquirer";
-import chalk from "chalk";
-console.log(chalk.bold.blueBright("\n\t wellcome to `Àdventure Game with Sara Atif`\n"));
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var inquirer_1 = require("inquirer");
+var chalk_1 = require("chalk");
+console.log(chalk_1.default.bold.blueBright("\n\t wellcome to `Àdventure Game with Sara Atif`\n"));
 console.log("~".repeat(60));
 //classes player & opponent
-class Player {
-    name;
-    fuel = 100;
-    constructor(name) {
-        this.name = name;
-    }
-    ;
-    fuelDecrease() {
-        let fuel = this.fuel - 25;
-        this.fuel = fuel;
-    }
-    ;
-    fuelIncrease() {
+var Player = /** @class */ (function () {
+    function Player(name) {
         this.fuel = 100;
-    }
-    ;
-}
-;
-class Opponent {
-    name;
-    fuel = 100;
-    constructor(name) {
         this.name = name;
     }
-}
+    ;
+    Player.prototype.fuelDecrease = function () {
+        var fuel = this.fuel - 25;
+        this.fuel = fuel;
+    };
+    ;
+    Player.prototype.fuelIncrease = function () {
+        this.fuel = 100;
+    };
+    ;
+    return Player;
+}());
+;
+var Opponent = /** @class */ (function () {
+    function Opponent(name) {
+        this.fuel = 100;
+        this.name = name;
+    }
+    return Opponent;
+}());
 ;
 //player name & opponent select
-let player = await inquirer.prompt({
+var player = await inquirer_1.default.prompt({
     name: "name",
     type: "input",
     message: "Please Enter your name: "
 });
-let opponent = await inquirer.prompt({
+var opponent = await inquirer_1.default.prompt({
     name: "Select",
     type: "list",
     message: "Select your opponent: ",
     choices: ["Skeleton", "Assassin", "Zombie"]
 });
 //data gather
-let p1 = new Player(player.name);
-let o1 = new Opponent(opponent.Select);
+var p1 = new Player(player.name);
+var o1 = new Opponent(opponent.Select);
 do {
     //play with Skeleton
     if (opponent.Select == "Skeleton") {
-        let ask = await inquirer.prompt([
+        var ask = await inquirer_1.default.prompt([
             {
                 name: "Option",
                 type: "list",
@@ -57,39 +59,39 @@ do {
             }
         ]);
         if (ask.Option == "Attack") {
-            let num = Math.floor(Math.random() * 2);
+            var num = Math.floor(Math.random() * 2);
             if (num > 0) {
                 p1.fuelDecrease();
-                console.log(chalk.bold.red(`\n${p1.name} fuel is ${p1.fuel}`));
-                console.log(chalk.bold.green(`${o1.name} fuel is ${o1.fuel}\n`));
-                if (p1.fuel <= 0) {
-                    console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"));
+                console.log(chalk_1.default.bold.red("\n".concat(p1.name, " fuel is ").concat(p1.fuel)));
+                console.log(chalk_1.default.bold.green("".concat(o1.name, " fuel is ").concat(o1.fuel, "\n")));
+                if (p1.fuel == 0) {
+                    console.log(chalk_1.default.bold.red.italic("\n You Loose, Better luck next time.\n"));
                     process.exit();
                 }
             }
             if (num <= 0) {
                 p1.fuelDecrease();
-                console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`));
-                console.log(chalk.bold.green(`${p1.name} fuel is ${p1.fuel}\n`));
-                if (o1.fuel <= 0) {
-                    console.log(chalk.bold.green.italic("\nYou Win!\n"));
+                console.log(chalk_1.default.bold.red("\n".concat(o1.name, " fuel is ").concat(o1.fuel)));
+                console.log(chalk_1.default.bold.green("".concat(p1.name, " fuel is ").concat(p1.fuel, "\n")));
+                if (o1.fuel == 0) {
+                    console.log(chalk_1.default.bold.green.italic("\nYou Win!\n"));
                     process.exit();
                 }
             }
         }
         if (ask.Option == "Drink portion") {
             p1.fuelIncrease();
-            console.log(chalk.bold.green.italic(`\nYou drink health portion, your fuel is ${p1.fuel}\n`));
+            console.log(chalk_1.default.bold.green.italic("\nYou drink health portion, your fuel is ".concat(p1.fuel, "\n")));
         }
         if (ask.Option == "Run for your life") {
-            console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"));
+            console.log(chalk_1.default.bold.red.italic("\n You Loose, Better luck next time.\n"));
             process.exit();
         }
     }
     ;
     // play with Assassin
     if (opponent.Select == "Assassin") {
-        let ask = await inquirer.prompt([
+        var ask = await inquirer_1.default.prompt([
             {
                 name: "Option",
                 type: "list",
@@ -98,38 +100,38 @@ do {
             }
         ]);
         if (ask.Option == "Attack") {
-            let num = Math.floor(Math.random() * 2);
+            var num = Math.floor(Math.random() * 2);
             if (num > 0) {
                 p1.fuelDecrease();
-                console.log(chalk.bold.red(`\n${p1.name} fuel is ${p1.fuel}`));
-                console.log(chalk.bold.green(`${o1.name} fuel is ${o1.fuel}\n`));
+                console.log(chalk_1.default.bold.red("\n".concat(p1.name, " fuel is ").concat(p1.fuel)));
+                console.log(chalk_1.default.bold.green("".concat(o1.name, " fuel is ").concat(o1.fuel, "\n")));
                 if (p1.fuel <= 0) {
-                    console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"));
+                    console.log(chalk_1.default.bold.red.italic("\n You Loose, Better luck next time.\n"));
                     process.exit();
                 }
             }
             if (num <= 0) {
                 p1.fuelDecrease();
-                console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`));
-                console.log(chalk.bold.green(`${p1.name} fuel is ${p1.fuel}\n`));
+                console.log(chalk_1.default.bold.red("\n".concat(o1.name, " fuel is ").concat(o1.fuel)));
+                console.log(chalk_1.default.bold.green("".concat(p1.name, " fuel is ").concat(p1.fuel, "\n")));
                 if (o1.fuel <= 0) {
-                    console.log(chalk.bold.green.italic("\nYou Win!\n"));
+                    console.log(chalk_1.default.bold.green.italic("\nYou Win!\n"));
                     process.exit();
                 }
             }
         }
         if (ask.Option == "Drink portion") {
             p1.fuelIncrease();
-            console.log(chalk.bold.green.italic(`\nYou drink health portion, your fuel is ${p1.fuel}\n`));
+            console.log(chalk_1.default.bold.green.italic("\nYou drink health portion, your fuel is ".concat(p1.fuel, "\n")));
         }
         if (ask.Option == "Run for your life") {
-            console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"));
+            console.log(chalk_1.default.bold.red.italic("\n You Loose, Better luck next time.\n"));
             process.exit();
         }
     }
     //paly with Zombie
     if (opponent.Select == "Zombie") {
-        let ask = await inquirer.prompt([
+        var ask = await inquirer_1.default.prompt([
             {
                 name: "Option",
                 type: "list",
@@ -138,32 +140,32 @@ do {
             }
         ]);
         if (ask.Option == "Attack") {
-            let num = Math.floor(Math.random() * 2);
+            var num = Math.floor(Math.random() * 2);
             if (num > 0) {
                 p1.fuelDecrease();
-                console.log(chalk.bold.red(`\n${p1.name} fuel is ${p1.fuel}`));
-                console.log(chalk.bold.green(`${o1.name} fuel is ${o1.fuel}\n`));
+                console.log(chalk_1.default.bold.red("\n".concat(p1.name, " fuel is ").concat(p1.fuel)));
+                console.log(chalk_1.default.bold.green("".concat(o1.name, " fuel is ").concat(o1.fuel, "\n")));
                 if (p1.fuel <= 0) {
-                    console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"));
+                    console.log(chalk_1.default.bold.red.italic("\n You Loose, Better luck next time.\n"));
                     process.exit();
                 }
             }
             if (num <= 0) {
                 p1.fuelDecrease();
-                console.log(chalk.bold.red(`\n${o1.name} fuel is ${o1.fuel}`));
-                console.log(chalk.bold.green(`${p1.name} fuel is ${p1.fuel}\n`));
+                console.log(chalk_1.default.bold.red("\n".concat(o1.name, " fuel is ").concat(o1.fuel)));
+                console.log(chalk_1.default.bold.green("".concat(p1.name, " fuel is ").concat(p1.fuel, "\n")));
                 if (o1.fuel <= 0) {
-                    console.log(chalk.bold.green.italic("\nYou Win!\n"));
+                    console.log(chalk_1.default.bold.green.italic("\nYou Win!\n"));
                     process.exit();
                 }
             }
         }
         if (ask.Option == "Drink portion") {
             p1.fuelIncrease();
-            console.log(chalk.bold.green.italic(`\nYou drink health portion, your fuel is ${p1.fuel}\n`));
+            console.log(chalk_1.default.bold.green.italic("\nYou drink health portion, your fuel is ".concat(p1.fuel, "\n")));
         }
         if (ask.Option == "Run for your life") {
-            console.log(chalk.bold.red.italic("\n You Loose, Better luck next time.\n"));
+            console.log(chalk_1.default.bold.red.italic("\n You Loose, Better luck next time.\n"));
             process.exit();
         }
     }
